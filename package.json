@@ -1,45 +1,44 @@
 {
-  "name": "template-hono-nextjs-prisma",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "prisma:generate": "prisma generate --schema server/prisma/schema.prisma",
-    "prisma:migrate": "prisma migrate dev --schema server/prisma/schema.prisma"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.3.1",
-    "@radix-ui/react-label": "^2.1.2",
-    "@radix-ui/react-slot": "^1.1.2",
-    "better-auth": "^1.1.17",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "hono": "^4.7.0",
-    "install": "^0.13.0",
-    "lucide-react": "^0.469.0",
-    "next": "15.1.3",
-    "next-themes": "^0.4.4",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "sonner": "^1.7.4",
-    "swr": "^2.3.2",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2",
-    "zustand": "^5.0.3"
-  },
-  "devDependencies": {
-    "@types/node": "^22.13.1",
-    "@types/react-dom": "^19.0.3",
-    "@types/react": "^19.0.8",
-    "eslint": "^9.20.1",
-    "eslint-config-next": "15.1.3",
-    "postcss": "^8.5.2",
-    "prisma": "^6.3.1",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
-  }
+	"name": "template-hono-nextjs-prisma-v2",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"prisma:generate": "prisma generate --schema server/prisma/schema.prisma"
+	},
+	"dependencies": {
+		"@prisma/client": "^6.4.1",
+		"@radix-ui/react-label": "^2.1.2",
+		"@radix-ui/react-slot": "^1.1.2",
+		"better-auth": "^1.1.21",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"hono": "^4.7.2",
+		"lucide-react": "^0.477.0",
+		"next": "15.2.0",
+		"next-themes": "^0.4.4",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"sonner": "^2.0.1",
+		"swr": "^2.3.2",
+		"tailwind-merge": "^3.0.2",
+		"tailwindcss-animate": "^1.0.7",
+		"zod": "^3.24.2",
+		"zustand": "^5.0.3"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "15.2.0",
+		"prisma": "^6.4.1",
+		"tailwindcss": "^4",
+		"typescript": "^5"
+	}
 }

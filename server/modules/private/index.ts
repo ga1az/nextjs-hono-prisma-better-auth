@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { auth } from "../../lib/auth";
+import { auth } from "@/server/lib/auth";
 import privateRoutesMiddleware from "@/server/middleware";
 
 const privateRoutes = new Hono<{
