@@ -25,7 +25,7 @@ cp .env.template .env
 ## Prisma
 
 ```bash
-bun prisma generate
+bun run prisma:generate
 ```
 
 ## Run
