@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +12,7 @@ import { authClient } from "@/lib/auth-client";
 
 export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const redirect = searchParams.get("redirect");
   const priceId = searchParams.get("priceId");
   const [isPending, setIsPending] = useState(false);
@@ -123,24 +124,35 @@ export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
               className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               disabled={isPending}
               onClick={async () => {
-                if (mode === "signin") {
-                  await authClient.signIn.email(
-                    {
-                      email,
-                      password,
-                      callbackURL: "/dashboard",
-                    },
-                    fetchCallback({ setIsPending })
-                  );
-                } else {
-                  await authClient.signUp.email(
-                    {
-                      email,
-                      password,
-                      name,
-                      callbackURL: "/dashboard",
-                    },
-                    fetchCallback({ setIsPending })
+                try {
+                  if (mode === "signin") {
+                    await authClient.signIn.email(
+                      {
+                        email,
+                        password,
+                        callbackURL: "/dashboard",
+                      },
+                      fetchCallback({ setIsPending })
+                    );
+                  } else {
+                    await authClient.signUp.email(
+                      {
+                        email,
+                        password,
+                        name,
+                        callbackURL: "/dashboard",
+                      },
+                      fetchCallback({ setIsPending })
+                    );
+
+                    router.push("/dashboard");
+                  }
+                } catch (error) {
+                  console.error(error);
+                  setError(
+                    error instanceof Error
+                      ? error.message
+                      : "Sign failed, please try again"
                   );
                 }
               }}

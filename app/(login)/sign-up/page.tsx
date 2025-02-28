@@ -1,5 +1,10 @@
-import { Login } from "../login";
+import { Suspense } from "react";
+import { Login } from "@/components/login";
 
 export default function SignUpPage() {
-  return <Login mode="signup" />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Login mode="signup" />
+    </Suspense>
+  );
 }
